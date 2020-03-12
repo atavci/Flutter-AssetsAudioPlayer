@@ -108,12 +108,11 @@ class Music : NSObject, AVAudioPlayerDelegate {
         let url = URL(fileURLWithPath: path)
 //        log("url: "+url.absoluteString)
         do {
-            
             /* set session category and mode with options */
             if #available(iOS 10.0, *) {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, mode: AVAudioSessionModeDefault, options: [])
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default, options: [])
             } else {
-                try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, with: .mixWithOthers)
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback)
             }
             
             try AVAudioSession.sharedInstance().setActive(true)
